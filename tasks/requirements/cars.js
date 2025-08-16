@@ -4,6 +4,6 @@ const cars = [
     { id: 3, title: "Sports Car", brand: "Porsche", year: 2023, price: 120000, isPremium: true },
     { id: 4, title: "Electric Hatchback", brand: "Nissan", year: 2022, price: 35000, isPremium: false },
     { id: 5, title: "Luxury SUV", brand: "BMW", year: 2023, price: 90000, isPremium: true },
-]
+];
 
 export default cars;
