@@ -19,12 +19,12 @@ function MovieForm({ addMovie }) {
 
         console.log(movieData);
 
-        // if (!movieData.title.trim() || !movieData.ott.trim()) {
-        //     alert("Please enter movie title and OTT name.");
-        //     return
-        // }
+        if (!movieData.title.trim() || !movieData.ott.trim()) {
+            alert("Please enter movie title and OTT name.");
+            return
+        }
 
-        // addMovie(movieData);
+        addMovie(movieData);
 
         setMovieData({
             title: "",
