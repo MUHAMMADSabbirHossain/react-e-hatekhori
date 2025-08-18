@@ -1,12 +1,7 @@
 import ReactStars from 'react-stars'
 import PropTypes from 'prop-types'
 
-function MovieItem({
-    movie,
-    rateMovie,
-    toggleWatched,
-    deleteMovie,
-}) {
+function MovieItem({ movie, rateMovie, toggleWatched, deleteMovie }) {
     function ratingChange(newRating) {
         rateMovie(movie.id, newRating)
     }
@@ -14,45 +9,56 @@ function MovieItem({
     return (
         <li
             key={movie.id}
-            className="p-4 bg-white shadow-xl rounded-lg border border-gray-200 text-gray-600"
+            className="p-4 sm:p-6 bg-white rounded-2xl shadow-lg border border-gray-100 
+                       flex flex-col gap-3 sm:gap-4 transition-all duration-300 hover:shadow-2xl"
         >
+            {/* Title */}
             <h3
-                className={`font-bold  ${movie.watched ? 'line-through' : ''}`}
+                className={`text-lg sm:text-xl font-semibold text-gray-800 
+                           ${movie.watched ? 'line-through text-gray-400' : ''}`}
             >
                 {movie.title}
             </h3>
-            <p className=''>OTT: {movie.ott}</p>
-            <div className='flex items-center'>
+
+            {/* OTT Info */}
+            <p className="text-sm sm:text-base text-gray-500">
+                OTT: <span className="font-medium text-gray-700">{movie.ott}</span>
+            </p>
+
+            {/* Rating */}
+            <div className="flex items-center gap-2">
                 <ReactStars
                     count={5}
                     value={movie?.rating}
                     onChange={ratingChange}
-                    size={24}
-                    color2={'#ffd700'}
+                    size={20}
+                    color2={'#facc15'} // Tailwind yellow-400
                 />
-                <span className='text-xs font-bold'>
+                <span className="text-xs sm:text-sm font-semibold text-gray-600">
                     ({movie.rating})
                 </span>
             </div>
 
-            <div className='space-x-2'>
-                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-2 mt-2">
+                <button
+                    className="flex-1 sm:flex-none bg-green-500 hover:bg-green-600 
+                               text-white text-sm sm:text-base font-medium py-2 px-4 
+                               rounded-xl shadow-md transition-all duration-300"
                     onClick={() => toggleWatched(movie.id)}
                 >
-                    {
-                        movie.watched
-                            ? 'watched'
-                            : 'Unwatched'
-                    }
+                    {movie.watched ? 'Watched ✅' : 'Unwatched 👀'}
                 </button>
                 <button
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    className="flex-1 sm:flex-none bg-red-500 hover:bg-red-600 
+                               text-white text-sm sm:text-base font-medium py-2 px-4 
+                               rounded-xl shadow-md transition-all duration-300"
                     onClick={() => deleteMovie(movie.id)}
                 >
-                    Delete
+                    Delete 🗑️
                 </button>
             </div>
-        </li >
+        </li>
     )
 }
 
