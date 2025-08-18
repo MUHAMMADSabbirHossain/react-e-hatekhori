@@ -17,7 +17,7 @@ function MovieItem({
             className="p-4 bg-white shadow-xl rounded-lg border border-gray-200 text-gray-600"
         >
             <h3
-                className={`font-semibold ${movie.watched ? 'line-through' : ''}`}
+                className={`font-bold  ${movie.watched ? 'line-through' : ''}`}
             >
                 {movie.title}
             </h3>
@@ -35,7 +35,7 @@ function MovieItem({
                 </span>
             </div>
 
-            <div>
+            <div className='space-x-2'>
                 <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                     onClick={() => toggleWatched(movie.id)}
                 >
